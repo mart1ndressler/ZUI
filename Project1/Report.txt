@@ -1,0 +1,30 @@
+REPORT - 2048 Solver
+
+Cílem této práce bylo vytvořit tři různé „solvery“ – tedy strategie, které určují tahy v každém kole pro hru 2048. Při práci jsem využíval AI (GPT).
+Na začátku jsem měl k dispozici základní implementaci samotné hry, která zvládala jen základní logiku – pohyby, slučování dlaždic a přidávání nových čísel. Poté jsem se pustil do tvorby solverů.
+Poté jsem si začal s výběrem solveru vybral jsem si Random Solver, Heuristic Solver a Monte Carlo Solver.
+GPT mi na začátku pomohlo nejen se základní strukturou programu, ale i s návrhem a laděním jednotlivých solverů. 
+Většinu kódu a zlepšení jsem získal pomocí cílených dotazů – a dotlačit ho k tomu, co má udělat, bylo díky lepší (placené) verzi poměrně snadné.
+
+Random Solver
+Tento solver volí tahy zcela náhodně. Nevyhodnocuje stav hry, ani se nepokouší o žádnou strategii – jednoduše vybírá náhodný směr (doleva, doprava, nahoru nebo dolů). 
+Výsledky byly velmi slabé, maximální dosažená dlaždice se většinou pohybovala kolem 64, 128 nebo 256 a nedošlo k žádné výhře. Slouží spíše jako kontrolní ukázka náhodného chování bez strategie.
+
+Heuristic Solver
+Tato strategie se snaží vybrat takový tah, po kterém zůstane na herním poli co nejvíce volných míst. Díky tomu se hra udrží déle v chodu a má větší šanci kombinovat další dlaždice. 
+Heuristický solver je už o něco chytřejší než náhodný, ale stále postrádá hlubší plánování. Podařilo se mu dosáhnout spíše dlaždic typu 256 nebo 512, ale k výhře stále nedošlo.
+
+Monte Carlo Solver
+Nejlepší z testovaných solverů. Tento přístup pro každý možný tah několikrát nasimuluje (tzv. rollout), jak by se hra mohla vyvíjet dál. 
+Poté spočítá průměrné skóre z těchto simulací a vybere tah, který měl nejlepší výsledek. Vylepšení spočívalo v tom, že pokud při simulaci došlo k výhře, byl takový tah ohodnocen výrazně vyšším skóre.
+Díky tomu se Monte Carlo solveru podařilo v polovině hrách skutečně vyhrát.
+
+HOME MESSAGE
+
+Podle mě už by se ani nedalo říct, co všechno je AI, ale spíš kde ještě AI není. 
+Od roku 2020, kdy to celé pořádně vybouchlo, se umělá inteligence objevuje skoro všude – v mobilech, televizích, aplikacích, vysavačích nebo autech. Je běžnou součástí technologií, které používáme každý den.
+Za AI dnes ale nemusíme považovat jen neuronové sítě – může to být i jednoduché náhodné hledání s trochou logiky nebo pravidla jako v heuristickém solveru. I to už spadá pod pojem umělé inteligence, protože to nějak „rozhoduje“.
+AI určitě není potřeba úplně všude – někdy stačí jednoduché pravidlo nebo náhoda. Ale jakmile je problém složitější (jako třeba hra 2048), tak se chytrá strategie vyplatí. 
+To šlo vidět třeba u mého Monte Carlo solveru, který se rozhodoval podle simulací a dosahoval výrazně lepších výsledků. 
+Pokud bych chtěl pokračovat dál, šla by použít neurální síť, která by se hru učila třeba na základě výsledků z tisíců her – a mohla by predikovat, jaký tah bude nejvýhodnější. 
+Ještě zajímavější by bylo využít reinforcement learning – tedy nechat agenta, aby se postupně učil sám, jak vyhrávat. Takový přístup by mohl časem porazit všechny ostatní.
